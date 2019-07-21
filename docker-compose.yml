@@ -1,4 +1,4 @@
-version: "3.4"
+version: "3.7"
 
 services:
 
@@ -19,38 +19,10 @@ services:
     restart: always
     ports:         #ports allows to map ports from HOST:CONTAINER (Port 80 on Host equals Port 80 of nginx Container)
       - "80:80"
-    links:
-      - phpfpm
-
-  # db:
-  #   build: ./mysql
-  #   container_name: mysql
-  #   restart: always
-  #   ports: 
-  #   - "3306:3306"
-
-  phpfpm:
-      image: php:fpm
-      ports:
-          - "9000:9000"
-      volumes:
-          - ./php:/usr/share/nginx/html
 
   mysql:
     image: mariadb
     environment:
-      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_ROOT_PASSWORD=testpassword
     ports:
       - "3306:3306"
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    links:
-      - mysql
-    ports:
-      - 8183:80
-    environment:
-      - PMA_USER=root
-      - PMA_PASSWORD=admin
-      - PMA_ARBITRARY=1
