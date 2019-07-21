@@ -1,0 +1,8 @@
+#official nginx image
+FROM mysql
+
+
+ENV MYSQL_ROOT_PASSWORD bottest123
+ENV MYSQL_DATABASE bot
+ENV MYSQL_USER ikarus2k
+ENV MYSQL_PASSWORD bottest123
